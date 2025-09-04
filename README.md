@@ -6,19 +6,16 @@
 
 якщо залік:
 
-- 30 балів лаби 
-- 30 балів курсовий проект
-- 20 балів кр
-- 20 балів усне 
+- 40 балів лаби 
+- 40 балів курсовий проект
+- 20 балів усне + конспект
 
 
-якщо іспит: 
+іспит: 
 
-- 30 балів лаби 
-- 30 балів курсовий проект
-- 20 балів іспит 
-- 20 балів усне
-
+- 40 балів лаби 
+- 40 балів курсовий проект
+- 20 балів усне + конспект
 
 
 ## Програма
@@ -68,4 +65,18 @@
 - створення baseline моделей
 - аналіз state-of-the-art підходів, робота з пейперами з використанням ChatGPT Deep Research або аналогів 
 - імплементація деякого підходу 
-- **презентація, демо на реальному коптері**
+- **презентація, демо на реальному коптері** (по можливості)
+
+
+
+## References:
+
+
+- основний ресурс: https://vnav.mit.edu/ 
+- https://docs.google.com/document/d/14jM845S288DODpDoNj_TjYZv4jmoKlrkOq2PigPFUbI/edit?usp=sharing
+
+- https://ardupilot.org/dev/docs/extended-kalman-filter.html#extended-kalman-filter
+- https://www.ros.org/
+- https://github.com/UZ-SLAMLab/ORB_SLAM3
+- https://simondlevy.github.io/ekf-tutorial/
+- https://github.com/simondlevy/TinyEKF/tree/master
