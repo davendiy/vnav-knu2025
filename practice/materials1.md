@@ -3,7 +3,7 @@
 
 Рекомендовані ресурси:
 - https://vnav.mit.edu/labs/lab1/
-- [Linux System Programming, p.10](https://doc.lagout.org/programmation/unix/Linux%20System%20Programming%20Talking%20Directly%20to%20the%20Kernel%20and%20C%20Library.pdf)
+- [Linux System Programming](https://doc.lagout.org/programmation/unix/Linux%20System%20Programming%20Talking%20Directly%20to%20the%20Kernel%20and%20C%20Library.pdf)
 
 Впродовж курсу вам необхідно буде вміти працювати з лінукс-машиною, користуючись суто
 терміналом. Тут зібрано основні команди, які вам можуть знадобитись для цього, а також
