@@ -46,14 +46,40 @@
 
 Кілька корисних команд:
 
-`pwd` видає вам де ви зараз знаходитесь (Print Working Directory).
+### `pwd` (Print Working Directory)
+видає вам де ви зараз знаходитесь.
 ```
 $ pwd
 /home/pi/
 ```
 
-`ls` показує список файлів і папок в нинішній директорії. Аргумент `-a` дозволяє побачити приховані файли, а
+
+### `cd <dir>` (~~see deez nuts~~ Change Directory)
+перейти в директорію.
+
+```shell
+
+$ cd /     # перейти в корінь
+$ pwd
+/
+$ cd ~/    # перейти в домашню директорію
+$ pwd
+/home/pi
+$ cd -     # повернутись в попереднє місце
+$ pwd
+/
+$ cd ~/Downloads
+$ pwd
+/home/pi/Downloads
+$ cd ..    # перейти на рівень назад
+$ pwd
+/home/pi/
+```
+
+### `ls` (LiSt contents)
+показує список файлів і папок в нинішній директорії. Аргумент `-a` дозволяє побачити приховані файли, а
 `-l` виводить все розгорнутим списком.
+
 ```shell
 $ ls
 labworks  latex     LICENSE   practice  README.md venv
@@ -83,6 +109,64 @@ drwxr-xr-x   8 davendiy  staff   256 Sep 11 15:28 venv
 Тут власник -- це користувач, який створив файл. Він якраз вказаний в третій колонці (davendiy). 
 
 
+### `find`
+шукає файли з заданими параметрами (наприклад, по назві)
+```shell
+$ find . -name "*.md"
+./labworks/lab1.md
+./labworks/lab2.md
+./README.md
+./venv/lib/python3.13/site-packages/numpy/random/LICENSE.md
+./practice/materials1.md
+````
+
+
+---
+
+## Редагування файлової системи
+
+### `mkdir <name>`  (Make Directory)
+створити папку
+
+```shell
+$ mkdir test
+$ ls
+test 
+```
+
+### `touch <file>`
+створити порожній файл АБО змінити дату останнього редагування/читання для існуючого файлу.
+
+```shell
+$ touch test.py
+$ ls
+test test.py
+```
+
+### `mv <src> <dest>` (MoVe)
+перемісити файл/папку або перейменувати. Щоб перемістити папку, треба додати параметр `-r`.
+
+```shell
+$ mv test.py test2.py   # перейменувати файл
+$ ls
+test test2.py
+$ mv test2.py test/     # перемістити файл в папку test/
+$ ls
+test
+$ cd test/
+$ ls
+test2.py
+```
+
+
+### `cp <src> <dest>` (CoPy)
+аналогічно до `mv`, тільки копіює файл/папку.
+
+### `rmdir <dir>` (ReMove Directory)
+видалити порожню папку.
+
+### `rm <file>` (ReMove)
+видалити файл або папку (треба додати параметр `-r`).
 
 ---
 
@@ -91,9 +175,13 @@ drwxr-xr-x   8 davendiy  staff   256 Sep 11 15:28 venv
 створює псевдо-файл, в який можна писати і з якого можна читати. Таким чином забезпечується обмін інформацією з
 девайсами.
 
+
 Варто ще згадати існування `hard links` i `symbolic links` -- це, по суті, посилання на папки/файли. Вони нам дозволяють
 робити коротші шляхи з одного місця в інший. Ми будемо використовувати саме `symbolic links`.
- 
+
+### `ln <src> <dest>` (LiNk)
+створити посилання (`hard link` або `symbolic link`) на файл/папку
+
 
 Про структуру Unix файлової системи написано в інтернетах багато, ось кілька прикладів:
 - https://tecadmin.net/linux-file-system/
