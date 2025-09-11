@@ -1,12 +1,25 @@
 
 # Практичне заняття 1. Знайомство з терміналом лінукс
 
-Рекомендовані ресурси: https://vnav.mit.edu/labs/lab1/
-
+Рекомендовані ресурси:
+- https://vnav.mit.edu/labs/lab1/
+- [Linux System Programming, p.10](https://doc.lagout.org/programmation/unix/Linux%20System%20Programming%20Talking%20Directly%20to%20the%20Kernel%20and%20C%20Library.pdf)
 
 Впродовж курсу вам необхідно буде вміти працювати з лінукс-машиною, користуючись суто
 терміналом. Тут зібрано основні команди, які вам можуть знадобитись для цього, а також
 ключові слова, які варто буде гуглити.
+
+
+## Допомога
+
+### `man <command>` (Manual)
+Скоріш за все, ваша система матиме вбудований переглядач документації `man`. З мінусів, тексти там доволі складні для
+розуміння.
+
+### `tldr <command>` (Too Long Didn't Read)
+
+Коротка вижимка з документації + основні приклади використання.
+Але треба встановлювати, за замовчуванням її нема: https://github.com/tldr-pages/tldr/wiki/Clients. 
 
 
 ## Навігація
@@ -44,8 +57,6 @@
 на диску. Більше того, `/` може бути на одному диску, а `/home`, наприклад, на іншому.
 
 
-Кілька корисних команд:
-
 ### `pwd` (Print Working Directory)
 видає вам де ви зараз знаходитесь.
 ```
@@ -78,7 +89,7 @@ $ pwd
 
 ### `ls` (LiSt contents)
 показує список файлів і папок в нинішній директорії. Аргумент `-a` дозволяє побачити приховані файли, а
-`-l` виводить все розгорнутим списком.
+`-l` виводить все розгорнутим списком. Часто в системі є ще скорочення `ll='ls -la'` i `l='ls'`.
 
 ```shell
 $ ls
@@ -181,6 +192,76 @@ test2.py
 
 ### `ln <src> <dest>` (LiNk)
 створити посилання (`hard link` або `symbolic link`) на файл/папку
+
+```shell
+$ ln -s ../../assets/practice2/dataset-gps example_dataset   # створюєм посилання на папку, яка знаходиться десь інде
+$ ls -la
+total 32
+drwxr-xr-x   5 davendiy  staff   160 Sep 11 23:50 .
+drwxr-xr-x@ 11 davendiy  staff   352 Sep 11 23:17 ..
+lrwxr-xr-x   1 davendiy  staff    34 Sep 11 23:50 example_dataset -> ../../assets/practice2/dataset-gps
+
+$ cd example_dataset   # посилання для нас тупо не відрізняється від звичайної папки
+$ pwd
+/Users/.../visual-navigation-systems/vnav-knu2025/practice/example_dataset
+$ cd -
+$ pwd
+/Users/davendiy/.../visual-navigation-systems/vnav-knu2025/practice
+
+$ ln -s ../../assets/practice2/output.csv output.csv
+$ ll
+total 32
+drwxr-xr-x   6 davendiy  staff   192 Sep 11 23:55 .
+drwxr-xr-x@ 11 davendiy  staff   352 Sep 11 23:17 ..
+lrwxr-xr-x   1 davendiy  staff    34 Sep 11 23:50 example_dataset -> ../../assets/practice2/dataset-gps
+-rw-r--r--   1 davendiy  staff  8750 Sep 11 23:52 materials1.md
+lrwxr-xr-x   1 davendiy  staff    33 Sep 11 23:55 output.csv -> ../../assets/practice2/output.csv
+
+$ head output.csv   # посилання на файл теж виглядає тупо як звичайний файл
+timestamp,TimeUS,DesRoll,Roll,DesPitch,Pitch,DesYaw,Yaw,ErrRP,ErrYaw,AEKF
+176.48235600,176482356,0.0,7.07,0.0,0.13,57.8,54.42,0.0,0.0,3
+176.58221000,176582210,0.0,7.07,0.0,0.13,60.8,54.43,0.0,0.0,3
+176.68236700,176682367,0.0,7.07,0.0,0.13,63.8,54.44,0.0,0.0,3
+176.78237800,176782378,0.0,7.07,0.0,0.13,66.8,54.45,0.0,0.0,3
+176.88220000,176882200,0.0,7.07,0.0,0.13,69.8,54.46,0.0,0.0,3
+176.98223500,176982235,0.0,7.07,0.0,0.13,72.8,54.47,0.0,0.0,3
+177.08219200,177082192,0.0,7.07,0.0,0.13,75.8,54.48,0.0,0.0,3
+177.18243400,177182434,0.0,7.07,0.0,0.13,78.8,54.49,0.0,0.0,3
+177.28220400,177282204,0.0,7.07,0.0,0.13,81.8,54.5,0.0,0.0,3
+```
+
+---
+
+## Читання і редагування файлів
+
+### `cat`  (Concatenate And Print)
+прочитати і вивести контент заданих файлів.
+
+```shell
+$ cat test.txt
+hello world!
+
+```
+
+### `echo` 
+вивести аргументи в stdout. Якщо просто її викликати, то вона буквально повторить за вами. Натомість можна
+_перенаправити_ вивід програми в файл і таким чином швидко щось записати туди.
+
+```shell
+
+$ ls
+$ echo "Hello world!" > test.txt    # > перенаправляє вивід і затирає файл
+$ ls
+test.txt
+$ cat test.txt
+Hello world!
+
+$ echo "yo" >> test.txt             # >> перенаправляє вивід і записує в кінець файлу
+$ cat test.txt
+Hello world!
+yo
+```
+
 
 
 Про структуру Unix файлової системи написано в інтернетах багато, ось кілька прикладів:
