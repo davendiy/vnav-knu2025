@@ -7,7 +7,7 @@
 ## Task 1 
 
 Встановіть убунту довільним чином (людям з встановленим лінуксом співчуваю): 
-- [WSL (***найпростіший варіант***)](https://github.com/davendiy/sage-labs2024) --
+- [WSL (***найпростіший варіант***)](https://github.com/davendiy/sage-labs2025) --
 встановлюєте на свій любімий віндовс лінуксове ядро і використовуєте його, як звичайну програму.
 
 - [встановлення паралельно з Windows як dual boot](https://itsfoss.com/install-ubuntu-1404-dual-boot-mode-windows-8-81-uefi/)
