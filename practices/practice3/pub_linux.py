@@ -1,4 +1,4 @@
-"""example_pub_linux.py [-h] filename
+"""pub_linux.py [-h] filename
 Simple ZMQ data provider.
 
 Parameters:
