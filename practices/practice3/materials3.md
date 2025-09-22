@@ -196,7 +196,7 @@ socket.setsockopt(zmq.SUBSCRIBE, b'')
 
 приклад: якщо першими запустити підписників, а далі паблішера, то всеодно перше повідомлення провтикується (Sending 0 було, а Got {param: counter, val: 0} не було): 
 
-![image]('../../assets/materials3/07-example_no_messages.png')
+![image](../../assets/materials3/07-example_no_messages.png)
 
 
 ## Blocking vs non-blocking 
